@@ -63,9 +63,9 @@ def get_data(driver):
     try:
         driver.get("https://spx.shopee.com.br/#/queue-list")
         time.sleep(8)
-        driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div/div/span/span/button').click()
+        driver.find_element(By.XPATH, '/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/span[2]/span[1]/button[1]/span[1]').click()
         time.sleep(8)
-        driver.find_element(By.XPATH, '/html[1]/body[1]/div[3]/ul[1]/li[1]/span[1]/div[1]/div[1]/span[1]').click()
+        driver.find_element(By.XPATH, '/html[1]/body[1]/div[5]/ul[1]/li[1]/span[1]/div[1]/div[1]/span[1]').click()
         time.sleep(8)
 
         driver.get("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
@@ -92,7 +92,7 @@ def rename_downloaded_file(download_dir):
         newest_file = max(files, key=os.path.getctime)
 
         current_hour = datetime.datetime.now().strftime("%H")
-        new_file_name = f"EXP-{current_hour}.csv"
+        new_file_name = f"QUEUE-{current_hour}.csv"
         new_file_path = os.path.join(download_dir, new_file_name)
 
         if os.path.exists(new_file_path):
