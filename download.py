@@ -87,6 +87,9 @@ def get_data(driver):
         date_input2.send_keys(d1)
         time.sleep(2)
 
+        driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div').click()
+        time.sleep(2)
+
         driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[4]/div[2]/button[2]/span').click()
         time.sleep(8)
 
