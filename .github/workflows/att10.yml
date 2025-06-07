@@ -19,9 +19,9 @@ jobs:
           python-version: '3.10'
 
       - name: Restaurar hxh.json a partir do segredo
+        shell: bash
         run: |
           echo "$GCP_JSON_BASE64" | base64 -d > hxh.json
-        shell: bash
         env:
           GCP_JSON_BASE64: ${{ secrets.GCP_JSON_BASE64 }}
 
