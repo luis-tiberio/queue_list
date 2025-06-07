@@ -57,7 +57,7 @@ def rename_downloaded_file(download_dir):
 def update_packing_google_sheets():
     try:
         current_hour = datetime.datetime.now().strftime("%H")
-        csv_file_name = f"EXP-{current_hour}.csv"
+        csv_file_name = f"QUEUE-{current_hour}.csv"
         csv_folder_path = "/tmp"
         csv_file_path = os.path.join(csv_folder_path, csv_file_name)
         if not os.path.exists(csv_file_path):
@@ -66,7 +66,7 @@ def update_packing_google_sheets():
         scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
         creds = Credentials.from_service_account_file('hxh.json', scopes=scope)
         client = gspread.authorize(creds)
-        sheet1 = client.open_by_url("https://docs.google.com/spreadsheets/d/1hoXYiyuArtbd2pxMECteTFSE75LdgvA2Vlb6gPpGJ-g/edit?gid=0#gid=0")
+        sheet1 = client.open_by_url("https://docs.google.com/spreadsheets/d/1nMLHR6Xp5xzQjlhwXufecG1INSQS4KrHn41kqjV9Rmk/edit?gid=0#gid=0")
         worksheet1 = sheet1.worksheet("Base SPX")
         df = pd.read_csv(csv_file_path)
         df = df.fillna("")
@@ -83,7 +83,7 @@ async def main():
         async with async_playwright() as p:
             browser = await p.chromium.launch(headless=True)
             page = await browser.new_page()
-            await login(page)
+            #await login(page)
             #await get_data(page, download_dir)
             print("Chamando Selenium...")
             subprocess.run(["python", "download.py"])
