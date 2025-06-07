@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Checkout do código
         uses: actions/checkout@v3
-
-      - name: Instalar Python
+        
+        - name: Instalar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
