@@ -5,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime, timedelta
+import time
 import os
 import shutil
 
@@ -115,7 +116,7 @@ def rename_downloaded_file(download_dir):
         files = [os.path.join(download_dir, f) for f in files]
         newest_file = max(files, key=os.path.getctime)
 
-        current_hour = datetime.datetime.now().strftime("%H")
+        current_hour = datetime.now().strftime("%H")
         new_file_name = f"QUEUE-{current_hour}.csv"
         new_file_path = os.path.join(download_dir, new_file_name)
 
