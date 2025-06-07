@@ -65,7 +65,7 @@ def get_data(driver):
         time.sleep(8)
         driver.find_element(By.XPATH, '/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/span[2]/span[1]/button[1]/span[1]').click()
         time.sleep(8)
-        driver.find_element(By.XPATH, '///div[@class='ssc-react-tooltip-reference']//span[contains(text(),'Exportar')]').click()
+        driver.find_element(By.XPATH, '///div[@class='ssc-react-tooltip-reference']//span[contains(text(),"Exportar")]').click()
         time.sleep(8)
 
         driver.get("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
