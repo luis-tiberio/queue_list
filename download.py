@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from datetime import datetime, timedelta
 import time
 import datetime
 import os
@@ -66,6 +67,28 @@ def get_data(driver):
         driver.find_element(By.XPATH, '/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/span[2]/span[1]/button[1]/span[1]').click()
         time.sleep(8)
         driver.find_element(By.XPATH, '/html/body/div[4]/ul/li[1]/span/div/div/span').click()
+        time.sleep(8)
+
+
+# Datas formatadas
+d3 = (datetime.now() - timedelta(days=3)).strftime("%Y/%m/%d")
+d1 = (datetime.now() + timedelta(days=1)).strftime("%Y/%m/%d")  # Corrigido o nome da variável
+
+# Primeiro campo de data
+date_input = driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[3]/div[2]/div/form/div/div/div/span[2]/div/div[1]/span[1]/span/input')
+date_input.click()
+date_input.clear()
+date_input.send_keys(d3)
+time.sleep(2)
+
+# Segundo campo de data
+date_input2 = driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[3]/div[2]/div/form/div/div/div/span[2]/div/div[1]/span[3]/span/input')
+date_input2.click()
+date_input2.clear()
+date_input2.send_keys(d1)
+time.sleep(2)
+
+        driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[4]/div[2]/button[2]/span').click()
         time.sleep(8)
 
         driver.get("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
