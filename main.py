@@ -67,7 +67,7 @@ def update_packing_google_sheets():
         creds = Credentials.from_service_account_file('hxh.json', scopes=scope)
         client = gspread.authorize(creds)
         sheet1 = client.open_by_url("https://docs.google.com/spreadsheets/d/1nMLHR6Xp5xzQjlhwXufecG1INSQS4KrHn41kqjV9Rmk/edit?gid=0#gid=0")
-        worksheet1 = sheet1.worksheet("Base SPX")
+        worksheet1 = sheet1.worksheet("Inbound")
         df = pd.read_csv(csv_file_path)
         df = df.fillna("")
         worksheet1.clear()
