@@ -63,7 +63,7 @@ def get_data(driver):
     try:
         driver.get("https://spx.shopee.com.br/#/queue-list")
         time.sleep(8)
-        driver.find_element(By.XPATH, '/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[2]/span[2]/span[1]/button[1]/span[1]').click()
+        driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/span[2]/span/button/span').click()
         time.sleep(8)
         driver.find_element(By.XPATH, '/html/body/div[4]/ul/li[1]/span/div/div/span').click()
         time.sleep(8)
