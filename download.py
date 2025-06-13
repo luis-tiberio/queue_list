@@ -96,9 +96,8 @@ def get_data(driver):
         time.sleep(15)
 
         # 👉 Botão de download
-        driver.find_element(
-            By.XPATH,
-            "//tr[@class='ssc-table-row ssc-table-row-highlighted']//td[@class='ssc-table-body-column-fixed ssc-table-body-column-fixed-right-first']//div//div[@class='ssc-table-header-column-container']//button[@type='button']//span//span[contains(text(),'Download')]"
+        WebDriverWait(driver, 15).until(
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="fms-container"]/div[2]/div[2]/div/div/div/div[1]/div[8]/div/div[1]/div/div[2]/div[1]/div[1]/div[2]/div/div/div/table/tbody[2]/tr[1]/td[7]/div/div/button'))
         ).click()
 
         time.sleep(15)  # Aguarda o download
