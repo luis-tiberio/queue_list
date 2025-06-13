@@ -61,14 +61,13 @@ def login(driver):
 def get_data(driver):
     try:
         driver.get("https://spx.shopee.com.br/#/queue-list")
-        time.sleep(8)
+        time.sleep(15)
         driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/span[2]/span/button/span').click()
-        time.sleep(8)
+        time.sleep(15)
         WebDriverWait(driver, 15).until(
             EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/ul/li[1]/span/div/div/span'))
         ).click()
-        #driver.find_element(By.XPATH, '/html/body/div[4]/ul/li[1]/span/div/div/span').click()
-        time.sleep(8)
+        time.sleep(15)
 
         # Datas formatadas
         d3 = (datetime.now() - timedelta(days=3)).strftime("%Y/%m/%d")
@@ -79,20 +78,20 @@ def get_data(driver):
         date_input.click()
         date_input.clear()
         date_input.send_keys(d3)
-        time.sleep(2)
+        time.sleep(5)
 
         # Segundo campo de data
         date_input2 = driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[3]/div[2]/div/form/div/div/div/span[2]/div/div[1]/span[3]/span/input')
         date_input2.click()
         date_input2.clear()
         date_input2.send_keys(d1)
-        time.sleep(2)
+        time.sleep(5)
 
         driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[1]/div').click()
-        time.sleep(2)
+        time.sleep(5)
 
         driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[4]/div[2]/button[2]/span').click()
-        time.sleep(8)
+        time.sleep(15)
 
         driver.get("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
         time.sleep(15)
@@ -102,7 +101,7 @@ def get_data(driver):
             EC.element_to_be_clickable((By.XPATH, '//*[@id="fms-container"]/div[2]/div[2]/div/div/div/div[1]/div[8]/div/div[1]/div/div[2]/div[1]/div[1]/div[2]/div/div/div/table/tbody[2]/tr[1]/td[7]/div/div/button'))
         ).click()
 
-        time.sleep(15)  # Aguarda o download
+        time.sleep(20)  # Aguarda o download
         rename_downloaded_file(download_dir)
 
     except Exception as e:
