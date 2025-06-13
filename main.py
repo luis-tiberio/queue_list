@@ -14,7 +14,7 @@ async def login(page):
     await page.goto("https://spx.shopee.com.br/")
     try:
         await page.wait_for_selector('input[placeholder="Ops ID"]', timeout=15000)
-        await page.fill('input[placeholder="Ops ID"]', 'Ops35683')
+        await page.fill('input[placeholder="Ops ID"]', 'Ops89710')
         await page.fill('input[placeholder="Senha"]', '@Shopee123')
         await page.click('._tYDNB')
         await page.wait_for_timeout(15000)
@@ -26,12 +26,12 @@ async def login(page):
     except Exception as e:
         print(f"Erro no login: {e}")
         raise
-"""
+
 async def get_data(page, download_dir):
     try:
-        await page.goto("https://spx.shopee.com.br/#/staging-area-management/list/outbound")
+        await page.goto("https://spx.shopee.com.br/#/queue-list")
         await page.wait_for_timeout(5000)
-        await page.locator('//button[@type="button"]//span[contains(text(),"Export")]').click()
+        await page.locator('/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/span[2]/span/button/span').click()
         await page.wait_for_timeout(5000)
         await page.wait_for_selector('(//span[contains(text(),"Export")])[2]', timeout=5000)
         await page.click('(//span[contains(text(),"Export")])[2]')
