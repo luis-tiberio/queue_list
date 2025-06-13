@@ -98,7 +98,7 @@ def get_data(driver):
         # 👉 Botão de download
         driver.find_element(
             By.XPATH,
-            '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div[8]/div/div[1]/div/div[2]/div[1]/div[1]/div[2]/div/div/div/table/tbody[2]/tr[1]/td[7]/div/div/button/span/span'
+            '/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/table[1]/tbody[2]/tr[1]/td[7]/div[1]/div[1]/button[1]/span[1]/span[1]'
         ).click()
 
         time.sleep(15)  # Aguarda o download
