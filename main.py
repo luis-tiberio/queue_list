@@ -39,7 +39,7 @@ async def get_data(page, download_dir):
     except Exception as e:
         print(f"Erro ao coletar dados: {e}")
         raise
-"""
+
 def rename_downloaded_file(download_dir):
     try:
         files = os.listdir(download_dir)
