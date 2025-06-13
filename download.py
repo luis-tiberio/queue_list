@@ -93,14 +93,22 @@ def get_data(driver):
         driver.find_element(By.XPATH, '/html/body/div[5]/div[2]/div/div/div[4]/div[2]/button[2]/span').click()
         time.sleep(15)
 
-        driver.get("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
+        #driver.get("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
         time.sleep(15)
+        driver.finde_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[1]/div[2]/div[2]/span/div/div').click
+        time.sleep(5)
+        driver.finde_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[1]/div[2]/div[2]/span/div/div').click
 
+        # 👉 Botão de download
+        WebDriverWait(driver, 15).until(
+            EC.element_to_be_clickable((By.XPATH, '/html/body/span/div/div[1]/div/span/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div[2]/button/span'))
+        ).click()
+        """
         # 👉 Botão de download
         WebDriverWait(driver, 15).until(
             EC.element_to_be_clickable((By.XPATH, '//*[@id="fms-container"]/div[2]/div[2]/div/div/div/div[1]/div[8]/div/div[1]/div/div[2]/div[1]/div[1]/div[2]/div/div/div/table/tbody[2]/tr[1]/td[7]/div/div/button'))
         ).click()
-
+        """
         time.sleep(20)  # Aguarda o download
         rename_downloaded_file(download_dir)
 
