@@ -58,14 +58,16 @@ def login(driver):
         driver.quit()
         raise
 
-
 def get_data(driver):
     try:
         driver.get("https://spx.shopee.com.br/#/queue-list")
         time.sleep(8)
         driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/span[2]/span/button/span').click()
         time.sleep(8)
-        driver.find_element(By.XPATH, '/html/body/div[4]/ul/li[1]/span/div/div/span').click()
+        WebDriverWait(driver, 15).until(
+            EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/ul/li[1]/span/div/div/span'))
+        ).click()
+        #driver.find_element(By.XPATH, '/html/body/div[4]/ul/li[1]/span/div/div/span').click()
         time.sleep(8)
 
         # Datas formatadas
@@ -107,8 +109,7 @@ def get_data(driver):
         print(f"Erro ao coletar dados: {e}")
         driver.quit()
         raise
-
-
+        
 def rename_downloaded_file(download_dir):
     try:
         files = [f for f in os.listdir(download_dir) if os.path.isfile(os.path.join(download_dir, f))]
