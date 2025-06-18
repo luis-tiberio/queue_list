@@ -90,7 +90,7 @@ async def get_data(page, download_dir):
 
 async def main():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080"])
+        browser = await p.chromium.launch(headless=False, args=["--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080"])
         context = await browser.new_context(accept_downloads=True)
         page = await context.new_page()
         try:
