@@ -65,8 +65,8 @@ async def get_data(page, download_dir):
         await date_input.type(d3)
         await page.wait_for_timeout(5000)
         """
-
-        date_input = page.locator('input[placeholder="Data de início"]')
+        
+        date_input = page.locator('input[placeholder="Data de início"]').nth(0)
         await date_input.wait_for(state="visible", timeout=10000)
         await date_input.click(force=True)
         await date_input.fill(d3)
