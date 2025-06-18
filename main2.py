@@ -49,7 +49,7 @@ async def get_data(page, download_dir):
         await page.wait_for_timeout(15000)
         await page.locator('xpath=/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[2]/div/div[2]/span[2]/span/button/span').click()
         await page.wait_for_timeout(15000)
-        await page.locator('xpath=/html/body/div[5]/ul/li[1]/span/div/div/span').click()
+        await page.locator('xpath=/html[1]/body[1]/div[8]/ul[1]/li[1]/span[1]/div[1]/div[1]/span[1]').click()
         await page.wait_for_timeout(15000)
 
         d3 = (datetime.now() - timedelta(days=3)).strftime("%Y/%m/%d")
