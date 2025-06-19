@@ -26,6 +26,25 @@ def rename_downloaded_file(download_dir):
     except Exception as e:
         print(f"Erro ao renomear o arquivo: {e}")
 
+def update_packing_google_sheets(csv_file_path):
+    try:
+        if not os.path.exists(csv_file_path):
+            print(f"Arquivo {csv_file_path} não encontrado.")
+            return
+        scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+        creds = ServiceAccountCredentials.from_json_keyfile_name("hxh.json", scope)
+        client = gspread.authorize(creds)
+        sheet1 = client.open_by_url("https://docs.google.com/spreadsheets/d/1nMLHR6Xp5xzQjlhwXufecG1INSQS4KrHn41kqjV9Rmk/edit?gid=0#gid=0")
+        worksheet1 = sheet1.worksheet("Base")
+        df = pd.read_csv(csv_file_path)
+        df = df.fillna("")
+        worksheet1.clear()
+        worksheet1.update([df.columns.values.tolist()] + df.values.tolist())
+        print(f"Arquivo enviado com sucesso para a aba 'Base'.")
+        time.sleep(5)
+    except Exception as e:
+        print(f"Erro durante o processo: {e}")
+        
 async def login(page):
     await page.goto("https://spx.shopee.com.br/")
     try:
@@ -114,6 +133,7 @@ async def main():
             await login(page)
             await get_data(page, download_dir)
             print("Download finalizado com sucesso.")
+            await update_packing_google_sheets(csv_file_path)
         except Exception as e:
             print(f"Erro: {e}")
         finally:
