@@ -117,7 +117,7 @@ async def get_data(page, download_dir):
         
         # 👉 Botão de download
         async with page.expect_download() as download_info:
-            await page.locator('xpath=/html/body/span/div/div[1]/div/span/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div[2]/button/span').click()
+            await page.locator('xpath=/html[1]/body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/table[1]/tbody[2]/tr[1]/td[7]/div[1]/div[1]/button[1]/span[1]/span[1]').click()
         download = await download_info.value
         download_path = os.path.join(download_dir, download.suggested_filename)
         await download.save_as(download_path)
