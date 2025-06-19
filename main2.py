@@ -111,7 +111,10 @@ async def get_data(page, download_dir):
         await page.locator('xpath=/html/body/div[5]/div[2]/div/div/div[4]/div[2]/button[2]/span').click()
         await page.wait_for_timeout(15000)
 
-        """
+        await page.goto("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
+        await page.wait_for_timeout(10000)
+        
+        
         # 👉 Botão de download
         async with page.expect_download() as download_info:
             await page.locator('xpath=/html/body/span/div/div[1]/div/span/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div[2]/button/span').click()
@@ -120,8 +123,9 @@ async def get_data(page, download_dir):
         await download.save_as(download_path)
         time.sleep(2)  # Pequeno delay para garantir o arquivo no sistema
         rename_downloaded_file(download_dir)
-        """
+        
 
+        """
         # Use async with para download
         async with page.expect_download() as download_info:
             #await page.wait_for_selector('xpath=/html/body/span/div/div[1]/div/span/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div[2]/button', timeout=30000)
@@ -130,6 +134,7 @@ async def get_data(page, download_dir):
         download_path = os.path.join(DOWNLOAD_DIR, download.suggested_filename)
         await download.save_as(download_path)
         new_file_path = rename_downloaded_file(download_dir)
+        """
 
     except Exception as e:
         print(f"Erro ao coletar dados: {e}")
