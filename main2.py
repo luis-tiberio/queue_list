@@ -44,9 +44,10 @@ def update_packing_google_sheets(csv_file_path):
 
 async def main():        
     os.makedirs(DOWNLOAD_DIR, exist_ok=True)
-    browser = await p.chromium.launch(headless=False, args=["--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080"])
-    context = await browser.new_context(accept_downloads=True)
-    page = await context.new_page()
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=False, args=["--no-sandbox", "--disable-dev-shm-usage", "--window-size=1920,1080"])
+        context = await browser.new_context(accept_downloads=True)
+        page = await context.new_page()
         try:
             # LOGIN
             await page.goto("https://spx.shopee.com.br/")
