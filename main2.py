@@ -82,7 +82,7 @@ async def main():
             await page.wait_for_timeout(5000)
             """
 
-            date_input = page.get_by_role("textbox", name="Data de início")
+            date_input = page.get_by_role("textbox", name="Data de início").nth(0)
             await date_input.wait_for(state="visible", timeout=10000)
             await date_input.click(force=True)
             await date_input.fill(d3)
