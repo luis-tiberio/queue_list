@@ -74,15 +74,19 @@ async def main():
             d1 = (datetime.now() + timedelta(days=1)).strftime("%Y/%m/%d")
 
             # Primeiro campo de data
-         
-            # Primeiro campo de data
-    
+            """    
             date_input = page.locator('input[placeholder="Data de início"]').nth(0)
             await date_input.click()
             await date_input.fill('')
             await date_input.type(d3)
             await page.wait_for_timeout(5000)
-    
+            """
+
+            date_input = page.get_by_role("textbox", name="Data de início")
+            await date_input.wait_for(state="visible", timeout=10000)
+            await date_input.click(force=True)
+            await date_input.fill(d3)
+
             # Segundo campo de data
             date_input2 = page.locator('input[placeholder="Data final"]').nth(0)
             #date_input2 = await page.wait_for_selector('xpath=/html/body/div[9]/div[2]/div/div/div[3]/div[2]/div/form/div/div/div/span[2]/div/div[1]/span[3]/span/input', timeout=5000)
