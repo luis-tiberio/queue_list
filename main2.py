@@ -77,7 +77,7 @@ async def main():
          
             # Primeiro campo de data
     
-            date_input = await page.wait_for_selector('xpath=/html/body/div[9]/div[2]/div/div/div[3]/div[2]/div/form/div/div/div/span[2]/div/div[1]/span[1]/span/input', timeout=5000)
+            date_input = await page.wait_for_selector(''input[placeholder="Data de início"]', timeout=5000).nth(0)
             await date_input.click()
             await date_input.fill('')
             await date_input.type(d3)
