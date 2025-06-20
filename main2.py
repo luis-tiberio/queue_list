@@ -5,6 +5,7 @@ import time
 import os
 import shutil
 import gspread
+import pandas as pd
 from oauth2client.service_account import ServiceAccountCredentials
 
 DOWNLOAD_DIR = "/tmp"
