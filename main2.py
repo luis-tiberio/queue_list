@@ -82,24 +82,27 @@ async def main():
             await page.wait_for_timeout(5000)
             """
 
-            date_input = page.get_by_role("textbox", name="Data de início").nth(0)
+            date_input = page.get_by_role("textbox", name="Data de início").nth(1)
             await date_input.wait_for(state="visible", timeout=10000)
             await date_input.click(force=True)
             await date_input.fill(d3)
 
             # Segundo campo de data
-            date_input2 = page.locator('input[placeholder="Data final"]').nth(0)
+            date_input = page.get_by_role("textbox", name="Data de Final").nth(1)
+            #date_input2 = page.locator('input[placeholder="Data final"]').nth(0)
             #date_input2 = await page.wait_for_selector('xpath=/html/body/div[9]/div[2]/div/div/div[3]/div[2]/div/form/div/div/div/span[2]/div/div[1]/span[3]/span/input', timeout=5000)
-            await date_input2.click()
-            await date_input2.fill('')
-            await date_input2.type(d1)
+            await date_input.wait_for(state="visible", timeout=10000)
+            await date_input.click(force=True)
+            await date_input.fill(d1)
             await page.wait_for_timeout(5000)
             
 
-            await page.locator('xpath=/html/body/div[9]/div[2]/div/div/div[1]/div').click()
+            await page.get_by_text("Exportação da Lista de Fila").click()
+            #await page.locator('xpath=/html/body/div[9]/div[2]/div/div/div[1]/div').click()
             await page.wait_for_timeout(5000)
-
-            await page.locator('xpath=/html/body/div[9]/div[2]/div/div/div[4]/div[2]/button[2]/span').click()
+            
+            await page.get_by_role('button', name='Confirm').click()
+            #await page.locator('xpath=/html/body/div[9]/div[2]/div/div/div[4]/div[2]/button[2]/span').click()
             await page.wait_for_timeout(15000)
 
             #await page.goto("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
