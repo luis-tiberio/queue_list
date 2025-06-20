@@ -77,7 +77,7 @@ async def main():
          
             # Primeiro campo de data
     
-            date_input = await page.locator('input[placeholder="Data de início"]').nth(0)
+            date_input = page.locator('input[placeholder="Data de início"]').nth(0)
             await date_input.click()
             await date_input.fill('')
             await date_input.type(d3)
