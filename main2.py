@@ -12,7 +12,7 @@ DOWNLOAD_DIR = "/tmp"
 
 def rename_downloaded_file(download_dir, download_path):
     try:
-        current_hour = datetime.datetime.now().strftime("%H")
+        current_hour = datetime.now().strftime("%H")
         new_file_name = f"QUEUE-{current_hour}.csv"
         new_file_path = os.path.join(download_dir, new_file_name)
         if os.path.exists(new_file_path):
