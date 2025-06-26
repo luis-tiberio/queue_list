@@ -75,14 +75,6 @@ async def main():
             d1 = (datetime.now() + timedelta(days=1)).strftime("%Y/%m/%d")
 
             # Primeiro campo de data
-            """    
-            date_input = page.locator('input[placeholder="Data de início"]').nth(0)
-            await date_input.click()
-            await date_input.fill('')
-            await date_input.type(d3)
-            await page.wait_for_timeout(5000)
-            """
-
             date_input = page.get_by_role("textbox", name="Data de início").nth(1)
             await date_input.wait_for(state="visible", timeout=10000)
             await date_input.click(force=True)
@@ -90,8 +82,6 @@ async def main():
 
             # Segundo campo de data
             date_input = page.get_by_role("textbox", name="Data final").nth(1)
-            #date_input2 = page.locator('input[placeholder="Data final"]').nth(0)
-            #date_input2 = await page.wait_for_selector('xpath=/html/body/div[9]/div[2]/div/div/div[3]/div[2]/div/form/div/div/div/span[2]/div/div[1]/span[3]/span/input', timeout=5000)
             await date_input.wait_for(state="visible", timeout=10000)
             await date_input.click(force=True)
             await date_input.fill(d1)
@@ -99,17 +89,12 @@ async def main():
             
 
             await page.get_by_text("Exportação da Lista de Fila").click()
-            #await page.locator('xpath=/html/body/div[9]/div[2]/div/div/div[1]/div').click()
             await page.wait_for_timeout(5000)
             
             await page.get_by_role('button', name='Confirm').click()
-            #await page.locator('xpath=/html/body/div[9]/div[2]/div/div/div[4]/div[2]/button[2]/span').click()
             await page.wait_for_timeout(15000)
 
-            #await page.goto("https://spx.shopee.com.br/#/taskCenter/exportTaskCenter")
-            #await page.wait_for_timeout(10000)
-            
-            
+          
             # 👉 Botão de download
             async with page.expect_download() as download_info:
                 await page.locator('xpath=/html/body/span/div/div[1]/div/span/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div[2]/button').click()
